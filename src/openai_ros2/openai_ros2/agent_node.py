@@ -20,7 +20,7 @@ class GPT4Node(Node):
             models = openai.Model.list() # Just to make sure your key is valid
             self.get_logger().info('API key successfully loaded')
         except Exception as e:
-            self.get_logger().error('API key NOT loaded. Make sure path to key is correct.')
+            self.get_logger().error('OPENAI_API_KEY is invalid.')
 
         try:
             self.chat_client = openai.OpenAI()
