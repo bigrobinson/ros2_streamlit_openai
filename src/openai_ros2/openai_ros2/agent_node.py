@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
-from openai import OpenAI
+import openai
 import os
 
 class GPT4Node(Node):
@@ -16,13 +16,14 @@ class GPT4Node(Node):
         self.publisher_ = self.create_publisher(String, 'completion', 10)
 
         try:
-            OpenAI.api_key = os.environ['OPENAI_API_KEY']
+            openai.OpenAI.api_key = os.environ['OPENAI_API_KEY']
+            models = openai.Model.list() # Just to make sure your key is valid
             self.get_logger().info('API key successfully loaded')
         except Exception as e:
             self.get_logger().error('API key NOT loaded. Make sure path to key is correct.')
 
         try:
-            self.chat_client = OpenAI()
+            self.chat_client = openai.OpenAI()
         except Exception as e:
             self.get_logger().error('Chat completion model not instantiated.')
 
