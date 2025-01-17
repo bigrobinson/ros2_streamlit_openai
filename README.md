@@ -6,6 +6,11 @@ Set the OpenAI key in your local environment
 ```
 export OPENAI_API_KEY=sk-123abc
 ```
+or 
+
+```
+echo "OPENAI_API_KEY=sk-123abc" >> $HOME/.bashrc
+```
 
 Clone the repository and ```colcon build``` from the top of the directory.
 
